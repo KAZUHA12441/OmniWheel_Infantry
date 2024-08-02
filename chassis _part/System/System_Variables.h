@@ -8,7 +8,7 @@
 #include "bsp_encoder.h"
 #include "bsp_dbus.h"
 #include "bsp_m6050.h"
-#include "first_order_fiter.h"
+#include "first_order_filter.h"
 #include "attitude.h"
 #include "bsp_can.h"
 #include "bsp_rm_motor.h"
@@ -30,8 +30,6 @@ typedef struct
     int16_t speed_set;
     int16_t position_set;
 }MototSet_t;
-
-
 
 //电机数据综合
 typedef struct
@@ -69,9 +67,9 @@ typedef struct
   float Chassis_Y;
   float Chassis_Yaw;
   
-  first_order_fiter_t  Fiter_Chassis_X;
-  first_order_fiter_t  Fiter_Chassis_Y;
-  first_order_fiter_t  Fiter_Chassis_Yaw;
+  first_order_filter_t  Fiter_Chassis_X;
+  first_order_filter_t  Fiter_Chassis_Y;
+  first_order_filter_t  Fiter_Chassis_Yaw;
 }RCData_Handle_t;
 
 typedef struct
