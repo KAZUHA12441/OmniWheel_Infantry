@@ -2,6 +2,12 @@
     "cortex-debug.armToolchainPath": "C:\\USERS\\PETER\\.EIDE\\TOOLS\\GCC_ARM\\BIN",
     "cortex-debug.openocdPath": "C:\\USERS\\PETER\\APPDATA\\ROAMING\\CODE\\USER\\GLOBALSTORAGE\\BMD.STM32-FOR-VSCODE\\@XPACK-DEV-TOOLS\\OPENOCD\\0.12.0-3.1\\.CONTENT\\BIN\\OPENOCD.EXE",
     "files.associations": {
-        "first_order_filter.h": "c"
+        "first_order_filter.h": "c",
+        "chassis.h": "c",
+        "system_variables.h": "c",
+        "state_change.h": "c",
+        "pid.h": "c",
+        "bsp_encoder.h": "c",
+        "bsp_rm_motor.h": "c"
     }
 }

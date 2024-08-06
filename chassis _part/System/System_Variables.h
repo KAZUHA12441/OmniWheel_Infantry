@@ -12,9 +12,11 @@
 #include "attitude.h"
 #include "bsp_can.h"
 #include "bsp_rm_motor.h"
+#include "state_change.h"
+
 #define max_value_limit(x, max, min) x > max ? max : (x < min ? min : x)
 
-
+//
 
 //获取的电机数据
 typedef struct 
@@ -67,9 +69,9 @@ typedef struct
   float Chassis_Y;
   float Chassis_Yaw;
   
-  first_order_filter_t  Fiter_Chassis_X;
-  first_order_filter_t  Fiter_Chassis_Y;
-  first_order_filter_t  Fiter_Chassis_Yaw;
+  first_order_filter_t  Filter_Chassis_X;
+  first_order_filter_t  Filter_Chassis_Y;
+  first_order_filter_t  Filter_Chassis_Yaw;
 }RCData_Handle_t;
 
 typedef struct
@@ -87,8 +89,7 @@ typedef struct
     Motor_t  RF_Wheel;
     Motor_t  LB_Wheel;
     Motor_t  RB_Wheel;
-    chassis_State ChassisState;   //底盘状态
-    dreidel_State DreidelState;   //是否小陀螺
+    Chassis_State ChassisState;   //底盘状态
  }Chassis; 
  //云台
 //  struct 
@@ -114,10 +115,12 @@ typedef struct
  {
     M6050_t  M6050_IMU;
     Attitude_data_t Attitube;
+    
  }Gimbal_Attitube;
  
 
 }OmniWheel_Infantry_Chassis_Struct;
 
+OmniWheel_Infantry_Chassis_Struct *get_infantry_struct(void);
 
 #endif /*__SYSTEM_INC_H*/

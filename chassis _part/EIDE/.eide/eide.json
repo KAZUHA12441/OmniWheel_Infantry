@@ -416,7 +416,8 @@
           "../BSP/inc",
           "../APP/inc",
           "../Algorithm/inc",
-          "../System"
+          "../System",
+          "../APP"
         ],
         "libList": [],
         "sourceDirList": [],

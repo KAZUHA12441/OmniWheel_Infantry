@@ -46,6 +46,10 @@ float  Pid_Parameter(pid_parameter_t *pid,float setval,float getval)
         pid->iout = 0;
     }
     pid->out = pid->pout + pid->iout + pid->dout;
+    if(__fabs(pid->out) > pid->out_limit)
+    {
+        pid->out = pid->out_limit;
+    }
     return  pid->out;
 } 
 
