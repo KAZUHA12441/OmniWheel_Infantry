@@ -41,6 +41,7 @@ typedef struct
     MototSet_t Motor_Set;
     float current_pid_out;
     float position_pid_out;
+    float speed_pid_out;
     int16_t give_current;
 
 }MotorData_t;
@@ -80,6 +81,7 @@ typedef struct
     attritude_angle Euler_angle;
 }Attitude_data_t;
 
+ 
 typedef struct
 {
  //底盘
@@ -91,16 +93,13 @@ typedef struct
     Motor_t  RB_Wheel;
     Chassis_State ChassisState;   //底盘状态
  }Chassis; 
- //云台
-//  struct 
-//  {
-//     Motor_t  Gimbal_Yaw_Motor;    
-//     Motor_t  Gimbal_Pitch_Motor;
-//     Motor_t  Friction_Master_Wheel; //摩擦轮主电机
-//     Motor_t  Friction_Slave_Wheel;  //摩擦轮副电机
-//     Euler_angle_t Gimbal_angle; 
-//     fire_State  FireState;       //是否开火
-//  }Gimbal;
+ 
+ struct 
+ {
+    Motor_t  Gimbal_Yaw_Motor;   
+    float Yaw_angle;
+    Fire_state firestate;
+ }Gimbal;
  //拨弹盘
  struct
  { 
@@ -115,7 +114,6 @@ typedef struct
  {
     M6050_t  M6050_IMU;
     Attitude_data_t Attitube;
-    
  }Gimbal_Attitube;
  
 

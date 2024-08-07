@@ -12,7 +12,7 @@ void CAN_Filter_Init(CAN_FilterTypeDef *filter,
                      uint32_t fifo_scale
                      );
 
-void CAN_MSG_TX(CAN_HandleTypeDef *hcan,CAN_TxHeaderTypeDef *CAN_Tx,uint16_t *data);
+void CAN_MSG_TX(CAN_HandleTypeDef *hcan,CAN_TxHeaderTypeDef *CAN_Tx,uint16_t stdid,uint16_t *data);
 
 
 

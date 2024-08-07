@@ -3,4 +3,9 @@
 
 #include "System_Variables.h"
 
+
+void OmniWheelSpeedSolution(float chassis_x,float chassis_y, float chassis_yaw);
+void Chassis_Init(void);
+void Chassis_RCDataHandle(Chassis_State State);
+
 #endif /*__CHASSIS_H*/

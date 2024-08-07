@@ -1,14 +1,19 @@
 #ifndef __SYSTEM_CONFIG_H
 #define __SYSTEM_CONFIG_H
 
-#define chassis_speed_gain 7.0f
-#define chassis_yaw_gain   3.0f
+#define PI                         3.141592654f  
 
+
+
+#define chassis_speed_gain         7.0f
+#define chassis_yaw_gain           3.0f
+#define ChassisIdle_InitAngle (1.414213562373f*PI)/2.0f
+#define ChassisDiagonalLength      900
 
 //输出最大值
-#define M3508_MAX_Current 16000
-#define GM6020_MAX_Current 16000
-#define M2006_MAX_Current  16000
+#define M3508_MAX_Current    16000
+#define GM6020_MAX_Current   16000
+#define M2006_MAX_Current    16000
 
 //DR16_位置状态选择                         
 #define DR16_LOCATION_SET    1
@@ -30,7 +35,7 @@
 #define DIAl_Kd              0.75f
 
 //一阶低通滤波系数
-#define Chassis_filter_alpha  0.03f
+#define Chassis_filter_alpha 0.03f
 
 
 

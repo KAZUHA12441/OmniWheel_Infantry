@@ -29,4 +29,5 @@ typedef struct
 
 void Pid_Parameter_Init(pid_parameter_t *pid,float Kp,float Ki,float Kd,float outmax,float ioutmax);
 void Pid_Reset(pid_parameter_t *pid);
+float  Pid_Parameter(pid_parameter_t *pid,float setval,float getval);
 #endif /*__PID_H*/

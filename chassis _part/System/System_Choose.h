@@ -14,9 +14,14 @@ typedef enum
 
 typedef enum
 {
-  dial_on,                  //开火状态
+  dial_on,                  
   dial_off,
 }Dial_State;
 
+typedef enum
+{
+  Friction_on,
+  Friction_off,
+}Fire_state;
 
 #endif /*__SYSTEM_CHOOSE_H*/

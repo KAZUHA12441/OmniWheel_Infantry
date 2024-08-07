@@ -3,7 +3,7 @@
 
 CAN_FilterTypeDef CAN_Filter;
 
-//该重构了
+
 
 
 uint32_t mailbox;
@@ -40,8 +40,8 @@ void CAN_Filter_Init(CAN_FilterTypeDef *filter,
 /// @brief can信息发送
 /// @param hcan can
 /// @param CAN_Tx 
-/// @param data 
-void CAN_MSG_TX(CAN_HandleTypeDef *hcan,CAN_TxHeaderTypeDef *CAN_Tx,uint16_t *data)
+/// @param data 长度为8
+void CAN_MSG_TX(CAN_HandleTypeDef *hcan,CAN_TxHeaderTypeDef *CAN_Tx,uint16_t stdid,uint16_t *data)
 {
 	  
 	        uint8_t send_data[8];
@@ -51,7 +51,7 @@ void CAN_MSG_TX(CAN_HandleTypeDef *hcan,CAN_TxHeaderTypeDef *CAN_Tx,uint16_t *da
 			{
 				send_data[i] = data[i];
 			}
-            CAN_Tx->StdId = 0x200;
+            CAN_Tx->StdId = stdid;
             CAN_Tx->DLC = 8;
 	        CAN_Tx->ExtId = 0;
 	        CAN_Tx->IDE = CAN_ID_STD;
