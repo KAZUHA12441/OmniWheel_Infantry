@@ -1,6 +1,10 @@
 #ifndef __SYSTEM_CONFIG_H
 #define __SYSTEM_CONFIG_H
 
+//407的最大频率
+#define  SYSTEM_Hz                 168
+
+
 #define PI                         3.141592654f  
 
 //底盘参数
@@ -37,6 +41,10 @@
 
 //一阶低通滤波系数
 #define Chassis_filter_alpha 0.03f
+
+//卡尔曼滤波系数
+#define Kalman_Q             0.7f
+#define Kalman_R             0.3f
 
 
 

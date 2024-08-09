@@ -6,7 +6,7 @@
 
 static float gyro_offset[3] = {0.0f,0.0f,0.0f}; //对应 x,y,z三轴角加速度数据
 static float accel_offset[2] = {0.0f,0.0f}; //对应x,y加速度数据，z轴默认为1不校准
-static float template_offset  = 0.0f;       //温度
+
 
 
 /// @brief 采样分频初始化 

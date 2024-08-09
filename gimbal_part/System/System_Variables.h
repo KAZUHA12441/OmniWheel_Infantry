@@ -13,6 +13,9 @@
 #include "bsp_can.h"
 #include "bsp_rm_motor.h"
 #include "state_change.h"
+#include "MahonyAHRS.h"
+#include "kalman.h"
+#include "bsp_dwt.h"
 
 #define max_value_limit(x, max, min) x > max ? max : (x < min ? min : x)
 
@@ -78,9 +81,19 @@ typedef struct
 typedef struct
 {
     float quaternion[4]; //四元数
+    float imu_handledata[6];
     attritude_angle Euler_angle;
 }Attitude_data_t;
 
+typedef struct 
+{
+    First_kalman_t Kalmanfilter_GYRO_X;
+    First_kalman_t Kalmanfilter_GYRO_Y;
+    First_kalman_t Kalmanfilter_GYRO_Z;
+    First_kalman_t Kalmanfilter_ACCEL_X;
+    First_kalman_t Kalmanfilter_ACCEL_Y;
+    First_kalman_t Kalmanfilter_ACCEL_Z;
+}IMU_KFFilterover;
  
 typedef struct
 {
@@ -99,6 +112,7 @@ typedef struct
     Motor_t  Gimbal_Yaw_Motor;
     Motor_t  Gimbal_Pitch_Motor;   
     float Yaw_angle;
+    float Pitch_angle;
     Fire_state firestate;
  }Gimbal;
  //拨弹盘
@@ -109,12 +123,14 @@ typedef struct
  //遥控数据
  rc_data_t RC;
  RCData_Handle_t  Handle_RC; 
- 
+ DWT_time_t System_time;
  //陀螺仪&云台姿态数据
  struct 
  {
     M6050_t  M6050_IMU;
     Attitude_data_t Attitube;
+    IMU_KFFilterover IMU_Handle;
+    uint8_t  IMU_Init_complate;
  }Gimbal_Attitube;
  
 
