@@ -3,12 +3,13 @@
 
 #define PI                         3.141592654f  
 
-
-
+//底盘参数
 #define chassis_speed_gain         7.0f
 #define chassis_yaw_gain           3.0f
-#define ChassisIdle_InitAngle (1.414213562373f*PI)/2.0f
+#define ChassisIdle_InitAngle (1.414213562373f)/2.0f
 #define ChassisDiagonalLength      900
+#define Chassis_dreidel_Speed      5000
+#define Dial_Rotate_Encoder_limit  300                    //规定每次转动位置,防止卡弹
 
 //输出最大值
 #define M3508_MAX_Current    16000
@@ -20,7 +21,7 @@
 
 //电机id
 #define LF_MOTOR_ID          1
-#define RF_MOtOR_ID          2
+#define RF_MOTOR_ID          2
 #define LB_MOTOR_ID          3
 #define RB_MOTOR_ID          4
 #define DIEL_MOTOR_ID        5

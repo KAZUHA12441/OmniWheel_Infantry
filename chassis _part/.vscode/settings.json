@@ -8,6 +8,7 @@
         "state_change.h": "c",
         "pid.h": "c",
         "bsp_encoder.h": "c",
-        "bsp_rm_motor.h": "c"
+        "bsp_rm_motor.h": "c",
+        "dial.h": "c"
     }
 }

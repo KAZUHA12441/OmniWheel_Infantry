@@ -20,6 +20,6 @@ typedef struct
 }MotorAttribute_t;
 
 
- void Motor_Attitude_Set(MotorAttribute_t *Motor_Att,uint32_t motorType,int32_t motor_id);
+ void Motor_Attitude_Set(MotorAttribute_t *Motor_Att,uint32_t motorType,int16_t motor_id);
 
 #endif /*__BSP_RM_MOTOR_H*/
