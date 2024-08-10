@@ -11,6 +11,6 @@ typedef struct
 
 }attritude_angle;
 
-
+void Attitube_Algoirthm(attritude_angle *angle,float *q);
 
 #endif /*__ATTITUDE_H*/

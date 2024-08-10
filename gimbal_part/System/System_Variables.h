@@ -18,7 +18,7 @@
 #include "bsp_dwt.h"
 
 #define max_value_limit(x, max, min) x > max ? max : (x < min ? min : x)
-
+// #define AngletoAmplitude(angle) ((angle>180.0f) ? (angle-=360.0f) : (angle<-180.0f) ? (angle += 360.0f):angle = angle)
 //
 
 //获取的电机数据
@@ -60,22 +60,14 @@ typedef struct
     Encoder_t Encoder;               //电机编码器
 }Motor_t;
 
-// typedef struct 
-// {
-//     float  roll;
-//     float  pitch; 
-//     float  yaw;
-// }Euler_angle_t;
-
 typedef struct 
 {
-  float Chassis_X;
-  float Chassis_Y;
-  float Chassis_Yaw;
-  
-  first_order_filter_t  Filter_Chassis_X;
-  first_order_filter_t  Filter_Chassis_Y;
-  first_order_filter_t  Filter_Chassis_Yaw;
+ 
+  float Gimbal_Yaw;
+  float Gimbal_Pitch;
+
+  first_order_filter_t  Filter_Gimbal_Pitch;
+  first_order_filter_t  Filter_Gimbal_Yaw;
 }RCData_Handle_t;
 
 typedef struct
@@ -95,31 +87,31 @@ typedef struct
     First_kalman_t Kalmanfilter_ACCEL_Z;
 }IMU_KFFilterover;
  
+typedef struct 
+{
+    float Set_angle;
+    float Get_angle;
+    float Now_angle;
+}Gimbal_angle_t;
+
+
 typedef struct
 {
- //底盘
- struct
- {
-    Motor_t  LF_Wheel;
-    Motor_t  RF_Wheel;
-    Motor_t  LB_Wheel;
-    Motor_t  RB_Wheel;
-    Chassis_State ChassisState;   //底盘状态
- }Chassis; 
  
  struct 
  {
     Motor_t  Gimbal_Yaw_Motor;
-    Motor_t  Gimbal_Pitch_Motor;   
-    float Yaw_angle;
-    float Pitch_angle;
-    Fire_state firestate;
+    Motor_t  Gimbal_Pitch_Motor;
+    Gimbal_angle_t Yaw;
+    Gimbal_angle_t Pitch;
  }Gimbal;
- //拨弹盘
+
  struct
- { 
-    Motor_t  Dial_Motor;
- }Dial;
+ {
+    Motor_t Friction_Master_Motor;
+    Motor_t Friction_Slave_Motor;
+    Fire_state firestate;
+ }Friction;
  //遥控数据
  rc_data_t RC;
  RCData_Handle_t  Handle_RC; 

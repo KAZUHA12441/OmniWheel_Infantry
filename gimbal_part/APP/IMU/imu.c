@@ -52,10 +52,10 @@ void IMU_GETData(float *pdata)
 
 /// @brief  云台姿态角解算
 void EulerAngle_Decode(void)
-{
-    get_sampleFreq(&IMU_Struct->System_time);
-    //解算
-    MahonyAHRSupdateIMU(IMU_Struct->Gimbal_Attitube.Attitube.quaternion,
+{ 
+   get_sampleFreq(&IMU_Struct->System_time);
+   //四元数
+   MahonyAHRSupdateIMU(IMU_Struct->Gimbal_Attitube.Attitube.quaternion,
                         IMU_Struct->Gimbal_Attitube.Attitube.imu_handledata[5],
                         IMU_Struct->Gimbal_Attitube.Attitube.imu_handledata[4],
                         IMU_Struct->Gimbal_Attitube.Attitube.imu_handledata[3],
@@ -63,5 +63,13 @@ void EulerAngle_Decode(void)
                         IMU_Struct->Gimbal_Attitube.Attitube.imu_handledata[1],
                         IMU_Struct->Gimbal_Attitube.Attitube.imu_handledata[2],
                         IMU_Struct->System_time.sampleFreq);
+
+   //姿态解算
+   
+   Attitube_Algoirthm(&IMU_Struct->Gimbal_Attitube.Attitube.Euler_angle,IMU_Struct->Gimbal_Attitube.Attitube.quaternion);
+
+   //当前姿态
+   IMU_Struct->Gimbal.Pitch.Get_angle= IMU_Struct->Gimbal_Attitube.Attitube.Euler_angle.Pitch * radtoangle;
+   IMU_Struct->Gimbal.Yaw.Get_angle = IMU_Struct->Gimbal_Attitube.Attitube.Euler_angle.Yaw * radtoangle;
 }
 

@@ -4,7 +4,7 @@
 /// @brief 姿态解算
 /// @param angle 欧拉角结构体
 /// @param q     四元数
-
+//输出为辐角
 void Attitube_Algoirthm(attritude_angle *angle,float *q)
 {
   angle->Yaw = atan2((q[0] * q[3] + q[1] * q[2]),(q[0] * q[0] + q[1] * q[1] - 0.5f));

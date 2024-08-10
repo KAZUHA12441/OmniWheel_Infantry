@@ -116,3 +116,17 @@ float Position_2_Speed_2_Current_Pid(pid_parameter_t *pid_position,
   float current_val = Speed_lap_pid(pid_speed,speed_val,getspeed);
   return Current_lap_pid(pid_current, current_val,getcurrent);
 }
+
+
+/// @brief 速度电流双环控制
+/// @param pid_speed 速度pid
+/// @param pid_current 电流pid
+/// @param setspeed  设定速度
+/// @param getspeed  获取速度
+/// @param getcurrent 获取电流
+/// @return 返回float电流
+float Speed_2_Current_Pid(pid_parameter_t *pid_speed,pid_parameter_t *pid_current,float setspeed,float getspeed,float getcurrent)
+{
+    float current_val = Pid_Parameter(pid_speed,setspeed,getspeed);
+    return  Pid_Parameter(pid_current,current_val,getcurrent);
+}

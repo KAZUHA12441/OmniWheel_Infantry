@@ -13,7 +13,10 @@
             "bsp_m6050.h": "c",
             "bsp_dwt.h": "c",
             "state_change.h": "c",
-            "kalman.h": "c"
+            "kalman.h": "c",
+            "bsp_rm_motor.h": "c",
+            "gimbal.h": "c",
+            "friction.h": "c"
         }
     },
     "extensions": {}

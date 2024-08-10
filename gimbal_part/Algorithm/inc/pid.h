@@ -38,4 +38,5 @@ float Position_2_Speed_2_Current_Pid(pid_parameter_t *pid_position,
                                      pid_parameter_t *pid_speed,
                                      pid_parameter_t *pid_current,
                                      float setposition,float getposition,float getspeed,float getcurrent);
+float Speed_2_Current_Pid(pid_parameter_t *pid_speed,pid_parameter_t *pid_current,float setspeed,float getspeed,float getcurrent);
 #endif /*__PID_H*/
