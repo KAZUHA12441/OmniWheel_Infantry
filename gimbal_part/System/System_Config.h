@@ -45,7 +45,7 @@
 #define GM6020_MAX_Current   10000
 #define M2006_MAX_Current    16000
 
-#define GM6020_MAX_SPEED     8000
+#define GM6020_MAX_SPEED    10000
 #define M3508_Max_SPEED     8000
 //DR16_位置状态选择                         
 #define DR16_LOCATION_SET    1

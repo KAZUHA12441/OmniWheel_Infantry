@@ -51,19 +51,19 @@ Chassis_State chassis_stateChange(rc_data_t *rc_data)
 /// @brief 拨弹盘状态
 /// @param rc_data 遥控器数据
 /// @return 
-Dial_State dial_stateChange(rc_data_t *rc_data)
+Rammer_State dial_stateChange(rc_data_t *rc_data)
 {
    //保证摩擦轮开启，再进行拨弹
    if(rc_data->rc.s2 == 2)
    {
      if(rc_data->rc.ch[4] < -400)
      {
-        return dial_on;
+        return Rammer_on;
      }
      else if(rc_data->rc.ch[4] >= -400 && rc_data->rc.ch[4] <= 400)
      {
-        return dial_off;
+        return Rammer_off;
      }
    }
-   return dial_off;
+   return Rammer_off;
 }

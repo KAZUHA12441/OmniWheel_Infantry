@@ -104,6 +104,7 @@ typedef struct
     Motor_t  Gimbal_Pitch_Motor;
     Gimbal_angle_t Yaw;
     Gimbal_angle_t Pitch;
+    Gimbal_State  GimbalState;
  }Gimbal;
 
  struct

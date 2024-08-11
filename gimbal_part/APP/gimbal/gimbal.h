@@ -8,6 +8,6 @@ void CheckOutput_Change(void);
 void  Gimbal_Init(void);
 float AngletoAmplitude(float angle);
 void RCHandleData(void);
-void GimbalControl(void);
+void GimbalControl(Gimbal_State State);
 void CheckOutput_Change(void);
 #endif /*__GIMBAL_H*/

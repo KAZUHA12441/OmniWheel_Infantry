@@ -19,7 +19,7 @@
 //
 
 //获取的电机数据
-typedef struct 
+typedef struct                      
 {
     uint16_t  position_get;
     int16_t   speed_get;
@@ -91,24 +91,24 @@ typedef struct
     Motor_t  RF_Wheel;
     Motor_t  LB_Wheel;
     Motor_t  RB_Wheel;
-    Chassis_State ChassisState;   //底盘状态
+    Chassis_State ChassisState;  
  }Chassis; 
  
  struct 
  {
-    Motor_t  Gimbal_Yaw_Motor;   
+    Motor_t Gimbal_Yaw_Motor;
     float Yaw_angle;
     Fire_state firestate;
  }Gimbal;
  //拨弹盘
  struct
  { 
-    Motor_t  Dial_Motor;
- }Dial;
+    Motor_t  Rammer_Motor;
+ }Rammer;
  //遥控数据
  rc_data_t RC;
  RCData_Handle_t  Handle_RC; 
- 
+ float Relative_angle;
  //陀螺仪&云台姿态数据
  struct 
  {
@@ -116,7 +116,6 @@ typedef struct
     Attitude_data_t Attitube;
  }Gimbal_Attitube;
  
-
 }OmniWheel_Infantry_Chassis_Struct;
 
 OmniWheel_Infantry_Chassis_Struct *get_infantry_struct(void);

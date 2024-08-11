@@ -1,5 +1,5 @@
-#ifndef __DIAL_H
-#define __DIAL_H
+#ifndef __RAMMER_H
+#define __RAMMER_H
 
 #include "System_Variables.h"
 

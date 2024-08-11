@@ -16,7 +16,8 @@
             "kalman.h": "c",
             "bsp_rm_motor.h": "c",
             "gimbal.h": "c",
-            "friction.h": "c"
+            "friction.h": "c",
+            "bsp_encoder.h": "c"
         }
     },
     "extensions": {}

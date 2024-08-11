@@ -24,4 +24,10 @@ typedef enum
   Friction_off,
 }Fire_state;
 
+typedef enum
+{
+  Gimbal_idle,
+  Gimbal_Control,
+}Gimbal_State;
+
 #endif /*__SYSTEM_CHOOSE_H*/

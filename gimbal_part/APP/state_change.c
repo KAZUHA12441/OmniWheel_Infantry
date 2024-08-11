@@ -18,7 +18,7 @@ Fire_state friction_State(uint8_t s1,uint8_t s2)
 {      
    switch (s2)
    {
-      case 1:
+      case 2:
       {
         return Friction_on;
     
@@ -29,5 +29,6 @@ Fire_state friction_State(uint8_t s1,uint8_t s2)
        }
        
    }
-   
 }
+
+

@@ -14,9 +14,9 @@ typedef enum
 
 typedef enum
 {
-  dial_on,                  
-  dial_off,
-}Dial_State;
+  Rammer_on,                  
+  Rammer_off,
+}Rammer_State;
 
 typedef enum
 {
