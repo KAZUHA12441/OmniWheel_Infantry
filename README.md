@@ -18,4 +18,4 @@
 
 
 
-![17f54e42ad4bd113ad92cff51fafa40f4afb0578](D:\17f54e42ad4bd113ad92cff51fafa40f4afb0578.jpg)
+![image](https://github.com/KAZUHA12441/OmniWheel_Infantry/blob/main/17f54e42ad4bd113ad92cff51fafa40f4afb0578.jpg)
