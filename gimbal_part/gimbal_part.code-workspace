@@ -17,7 +17,16 @@
             "bsp_rm_motor.h": "c",
             "gimbal.h": "c",
             "friction.h": "c",
-            "bsp_encoder.h": "c"
+            "bsp_encoder.h": "c",
+            "can1_rece.h": "c",
+            "can1_send.h": "c",
+            "can2_rece.h": "c",
+            "can2_send.h": "c",
+            "friction_task.h": "c",
+            "gimbal_task.h": "c",
+            "imu_task.h": "c",
+            "safe_task.h": "c",
+            "init_task.h": "c"
         }
     },
     "extensions": {}

@@ -15,7 +15,8 @@ uint32_t mailbox;
 /// @param fiter_bank 
 /// @param fifo_num 
 /// @param activation_state 
-void CAN_Filter_Init(CAN_FilterTypeDef *filter,
+void CAN_Filter_Init(CAN_HandleTypeDef *hcan,
+	                 CAN_FilterTypeDef *filter,
                      uint32_t rece_id,
                      uint32_t mask_id,
                      uint32_t filter_mode,
@@ -34,18 +35,17 @@ void CAN_Filter_Init(CAN_FilterTypeDef *filter,
  filter->FilterIdHigh = (rece_id>>16)&0xFFF;
  filter->FilterIdLow  = (rece_id<<16);
  filter->FilterMaskIdHigh = (mask_id>>16)&0xFF;
- filter->FilterMaskIdLow  = (mask_id<<16); 
+ filter->FilterMaskIdLow  = (mask_id<<16);
+ HAL_CAN_ConfigFilter(hcan, filter);
 }
 
 /// @brief can信息发送
 /// @param hcan can
 /// @param CAN_Tx 
 /// @param data 长度为8
-void CAN_MSG_TX(CAN_HandleTypeDef *hcan,CAN_TxHeaderTypeDef *CAN_Tx,uint16_t stdid,uint16_t *data)
+void CAN_MSG_TX_NOExtId(CAN_HandleTypeDef *hcan,CAN_TxHeaderTypeDef *CAN_Tx,uint32_t stdid,uint8_t *data)
 {
-	  
 	        uint8_t send_data[8];
-             
 		    int i;
 			for(i = 0;i<8;i++)
 			{
@@ -59,3 +59,4 @@ void CAN_MSG_TX(CAN_HandleTypeDef *hcan,CAN_TxHeaderTypeDef *CAN_Tx,uint16_t std
 	        CAN_Tx->TransmitGlobalTime = DISABLE;
 	        HAL_CAN_AddTxMessage(hcan, CAN_Tx, send_data, &mailbox);  
 }
+

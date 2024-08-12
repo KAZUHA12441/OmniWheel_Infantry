@@ -58,7 +58,6 @@ typedef struct
 {
    ACCEL_Data AD;
    GYRO_Data  GD;
-   
    float template;
 }M6050_t;
 

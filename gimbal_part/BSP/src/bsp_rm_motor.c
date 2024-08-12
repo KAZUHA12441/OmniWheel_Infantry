@@ -5,7 +5,7 @@
 /// @param Motor_Att 电机结构体 
 /// @param motorType 电机类型
 /// @param motor_id  电机can id
-void Motor_Attribute_Set(MotorAttribute_t *Motor_Att,uint32_t motorType,int32_t motor_id)
+void Motor_Attitude_Set(MotorAttribute_t *Motor_Att,uint32_t motorType,int16_t motor_id)
 {
     
     switch(motorType)

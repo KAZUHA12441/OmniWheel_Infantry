@@ -4,8 +4,7 @@
 OmniWheel_Infantry_Gimbal_Struct *IMU_Struct;
 
 /// @todo 准备改成队列
-uint8_t GYRO_pdata[6];//陀螺仪数据缓存区
-uint8_t ACCEL_pdata[6];//加速度计速度缓冲区
+
 
 /// @brief IMU部分初始化
 /// @todo 
@@ -32,6 +31,8 @@ void IMU_Init(void)
 /// @param pdata 处理后各轴的数据
 void IMU_GETData(float *pdata)
 {
+   uint8_t GYRO_pdata[6];//陀螺仪数据缓存区
+   uint8_t ACCEL_pdata[6];//加速度计速度缓冲区
    GYRO_DataDecode(&IMU_Struct->Gimbal_Attitube.M6050_IMU.GD,GYRO_pdata);
    ACCEL_DataDecode(&IMU_Struct->Gimbal_Attitube.M6050_IMU.AD,ACCEL_pdata);
    Zerofloat_Offset(&IMU_Struct->Gimbal_Attitube.M6050_IMU.GD,&IMU_Struct->Gimbal_Attitube.M6050_IMU.AD);

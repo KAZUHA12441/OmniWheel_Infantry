@@ -175,7 +175,6 @@ void dr16_data_input(void)
 		if ((dmarx.TxOutPtr->end - dmarx.TxOutPtr->start + 1) == DBUS_data_len)
 		{
 		     Rcdata_Decode(&rc,dmarx.TxOutPtr->start);
-
 		}
 		dmarx.TxOutPtr++;
 		if (dmarx.TxOutPtr == dmarx.TxEndPtr)

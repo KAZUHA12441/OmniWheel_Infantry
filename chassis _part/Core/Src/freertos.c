@@ -46,6 +46,7 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 osThreadId TaskInit;
+osThreadId Initialize;
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 
@@ -109,6 +110,9 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  osThreadDef(INITIALIZE,Init_Part, osPriorityNormal, 0, 1024);
+  Initialize = osThreadCreate(osThread(INITIALIZE), NULL);
+
   osThreadDef(INIT_TASK,Init_Task, osPriorityNormal, 0, 1024);
   TaskInit = osThreadCreate(osThread(INIT_TASK), NULL);
 

@@ -14,13 +14,13 @@ typedef enum
 
 typedef enum
 {
-  Rammer_on,                  
+  Rammer_on = 1,                  
   Rammer_off,
 }Rammer_State;
 
 typedef enum
 {
-  Friction_on,
+  Friction_on = 1 ,
   Friction_off,
 }Fire_state;
 

@@ -73,3 +73,15 @@ void CAN1_Rece_DATAHandle(void)
 	}
 	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
 }
+
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+	if (hcan == &hcan1)
+	{
+		CAN1_Rece_DATAHandle();
+	}
+	if (hcan == &hcan2)
+	{
+		CAN2_Rece_DATAHandle();
+	}
+}

@@ -8,9 +8,9 @@ typedef  struct
     int32_t  Encoder_Record_val;   //累计码盘值
     int32_t  Encoder_Actual_val;   //真实码盘值
     
-    
     float    Encoder_Now_angle;    //当前幅角
     int32_t  Now_encoder;
+
     uint16_t position;             
     uint16_t last_position;
     uint16_t first_encoder_val;

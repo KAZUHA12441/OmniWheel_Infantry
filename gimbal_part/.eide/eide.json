@@ -414,7 +414,11 @@
           "System",
           "Task",
           "Algorithm",
-          "Algorithm/inc"
+          "Algorithm/inc",
+          "APP/friction",
+          "APP/gimbal",
+          "APP/IMU",
+          "APP/rammer"
         ],
         "libList": [],
         "sourceDirList": [],

@@ -11,8 +11,8 @@ void Gimbal_Init(void)
     Gimbal_Struct = get_infantry_struct();
     Encoder_Init(&Gimbal_Struct->Gimbal.Gimbal_Yaw_Motor.Encoder);
     // 电机属性赋值
-    Motor_Attribute_Set(&Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.MotorAtt, GM6020, Gimbal_Pitch_MotorID);
-    Motor_Attribute_Set(&Gimbal_Struct->Gimbal.Gimbal_Yaw_Motor.MotorAtt, GM6020, Gimbal_Yaw_MotorID);
+    Motor_Attitude_Set(&Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.MotorAtt, GM6020, Gimbal_Pitch_MotorID);
+    Motor_Attitude_Set(&Gimbal_Struct->Gimbal.Gimbal_Yaw_Motor.MotorAtt, GM6020, Gimbal_Yaw_MotorID);
 
     Pid_Parameter_Init(&Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.Pid_position, Gimbal_Pitch_Kp, Gimbal_Pitch_Ki, Gimbal_Pitch_Kd, GM6020_MAX_SPEED, 0);
     Pid_Parameter_Init(&Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.Pid_speed, Gimbal_Pitch_Kp, Gimbal_Pitch_Ki, Gimbal_Pitch_Kd, GM6020_MAX_Current, 0);
@@ -42,8 +42,8 @@ float AngletoAmplitude(float angle)
 void RCHandleData(void)
 {
     // 取遥控器增量
-    Gimbal_Struct->Handle_RC.Gimbal_Yaw += Gimbal_Struct->RC.rc.ch[0] * gimbal_yaw_gain;
-    Gimbal_Struct->Handle_RC.Gimbal_Pitch += -Gimbal_Struct->RC.rc.ch[1] * gimbal_pitch_gain;
+    Gimbal_Struct->Handle_RC.Gimbal_Yaw += Gimbal_Struct->RC->rc.ch[0] * gimbal_yaw_gain;
+    Gimbal_Struct->Handle_RC.Gimbal_Pitch += -Gimbal_Struct->RC->rc.ch[1] * gimbal_pitch_gain;
     // 劣弧增量相加
     Gimbal_Struct->Gimbal.Yaw.Set_angle += AngletoAmplitude(Gimbal_Struct->Handle_RC.Gimbal_Yaw);
     Gimbal_Struct->Gimbal.Pitch.Set_angle += AngletoAmplitude(Gimbal_Struct->Handle_RC.Gimbal_Pitch);
@@ -67,7 +67,7 @@ void GimbalControl(Gimbal_State State)
             break;
         }
         case Gimbal_Control: {
-
+            RCHandleData();
             //---------------------------------------------------PITCH-------------------------------------------------------------
             // stepin
             if ((Gimbal_Struct->Gimbal.Pitch.Set_angle - Gimbal_Struct->Gimbal.Pitch.Now_angle) > rotate_angle_increase_limit) {

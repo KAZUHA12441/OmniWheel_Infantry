@@ -20,7 +20,7 @@ void Board_CAN1_dataHandle(OmniWheel_Infantry_Chassis_Struct *chassis_struct)
     CAN2_SendData_Part2[0] = chassis_struct->RC->rc.ch[4] >> 8;
     CAN2_SendData_Part2[1] = chassis_struct->RC->rc.ch[4];
     CAN2_SendData_Part2[2] = chassis_struct->RC->rc.s1;
-    CAN2_SendData_Part2[2] = chassis_struct->RC->rc.s2;
+    CAN2_SendData_Part2[3] = chassis_struct->RC->rc.s2;
 }
 
 void Board_Data_Send(void)

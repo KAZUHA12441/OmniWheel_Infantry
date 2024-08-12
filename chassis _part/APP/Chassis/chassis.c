@@ -180,6 +180,8 @@ void ChassisControlStateOutput(void)
   OmniWheel_Chassis->Chassis.RF_Wheel.Motor_Data.give_current = (int16_t)OmniWheel_Chassis->Chassis.RF_Wheel.Motor_Data.speed_pid_out;
 }
 
+
+// 这太长了封装一下简洁点 
 void ChassisControlChoose(Chassis_State State)
 {
     OmniWheel_Chassis->Chassis.ChassisState = State;

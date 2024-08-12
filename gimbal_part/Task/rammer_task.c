@@ -10,7 +10,7 @@
 #include "semphr.h"
 #include "timers.h"
 
-OmniWheel_Infantry_Chassis_Struct *task_rammer;
+OmniWheel_Infantry_Gimbal_Struct *task_rammer;
 
 void rammer_task(void const * argument)
 {
@@ -20,9 +20,9 @@ void rammer_task(void const * argument)
     RammerOnChoose(Rammer_stateChange(task_rammer->RC));
     //没测过，不知到会不会出bug
     taskENTER_CRITICAL();//进入临界区
-    chassis_CAN_dataHandle_Part2(task_rammer);
-    taskEXIT_CRITICAL();
-    Chassis_Data_Part2_Send();
+    Gimbal_CAN_dataHandle_Part2(task_rammer);
+    taskENTER_CRITICAL();
+    Gimbal_Data_Part2_Send();
     vTaskDelay(1);
   }
 }

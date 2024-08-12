@@ -1,10 +1,5 @@
 #include "bsp_encoder.h"
 
-//参考了ACE-ECF的算法 ,并进行了小改造
-
-
-
-
 
 /// @brief 编码器初始化
 /// @param encoder 

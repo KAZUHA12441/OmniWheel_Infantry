@@ -16,7 +16,7 @@
 #include "cmsis_os.h"
 
 extern osThreadId TaskInit;
-
+extern osThreadId Initialize;
 osThreadId TaskChassis;
 osThreadId TaskRammer;
 osThreadId TaskSafe;
@@ -24,7 +24,7 @@ osThreadId TaskSafe;
 
 void Init_Task(void const * argument)
 {
-  Init_Part();
+ 
   taskENTER_CRITICAL(); 
 
   //创建安全任务
@@ -39,10 +39,24 @@ void Init_Task(void const * argument)
   //创建拨弹盘任务
   osThreadDef(RAMMER_TASK,rammer_task,osPriorityRealtime, 0, 1024);
   TaskRammer = osThreadCreate(osThread(RAMMER_TASK), NULL);
-  #endif  
+  #endif 
+  
   vTaskDelete(TaskInit);
-  taskENTER_CRITICAL();
+  taskEXIT_CRITICAL();
 }
 
-
+void Init_Part(void const * argument)
+{
+  //Init
+  Chassis_Init();
+  #if(DR16_LOCATION_SET == chassis)
+  USART_PtrInit();
+  #endif
+  CAN1_Rece_Init();
+  CAN2_Rece_Init();
+  #if(Rammer_Location == chassis)
+  Rammer_Init();
+  #endif
+  Yaw_Encoder_Init();
+}
 

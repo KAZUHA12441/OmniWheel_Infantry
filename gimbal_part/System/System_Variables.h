@@ -16,6 +16,7 @@
 #include "MahonyAHRS.h"
 #include "kalman.h"
 #include "bsp_dwt.h"
+#include "bsp_rm_motor.h"
 
 #define max_value_limit(x, max, min) x > max ? max : (x < min ? min : x)
 // #define AngletoAmplitude(angle) ((angle>180.0f) ? (angle-=360.0f) : (angle<-180.0f) ? (angle += 360.0f):angle = angle)
@@ -94,10 +95,8 @@ typedef struct
     float Now_angle;
 }Gimbal_angle_t;
 
-
 typedef struct
 {
- 
  struct 
  {
     Motor_t  Gimbal_Yaw_Motor;
@@ -113,8 +112,13 @@ typedef struct
     Motor_t Friction_Slave_Motor;
     Fire_state firestate;
  }Friction;
+
+struct
+ { 
+    Motor_t  Rammer_Motor;
+ }Rammer;
  //遥控数据
- rc_data_t RC;
+ rc_data_t *RC;
  RCData_Handle_t  Handle_RC; 
  DWT_time_t System_time;
  //陀螺仪&云台姿态数据

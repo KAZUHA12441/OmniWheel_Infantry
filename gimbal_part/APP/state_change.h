@@ -4,5 +4,7 @@
 #include "System_Variables.h"
 
 
-Fire_state friction_State(uint8_t s1,uint8_t s2);
+Fire_state friction_State(rc_data_t *rc_data);
+Rammer_State Rammer_stateChange(rc_data_t *rc_data);
+Gimbal_State Gimbal_StateChange(rc_data_t *rc_data);
 #endif /*__STATE_CHANGE_H*/
