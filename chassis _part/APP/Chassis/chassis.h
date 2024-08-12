@@ -12,5 +12,5 @@ void Chassis_idle(void);
 void Chassis_lock(void);
 void ChassisControlStateSPid(void);
 void ChassisControlStateOutput(void);
-void ChassisControlAchieve(Chassis_State State);
+void ChassisControlChoose(Chassis_State State);
 #endif /*__CHASSIS_H*/

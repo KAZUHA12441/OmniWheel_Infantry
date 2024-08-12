@@ -51,7 +51,7 @@ Chassis_State chassis_stateChange(rc_data_t *rc_data)
 /// @brief 拨弹盘状态
 /// @param rc_data 遥控器数据
 /// @return 
-Rammer_State dial_stateChange(rc_data_t *rc_data)
+Rammer_State Rammer_stateChange(rc_data_t *rc_data)
 {
    //保证摩擦轮开启，再进行拨弹
    if(rc_data->rc.s2 == 2)

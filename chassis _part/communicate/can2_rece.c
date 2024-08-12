@@ -49,11 +49,11 @@ void CAN2_Rece_DATAHandle(void)
             case chassis_board_rece_data_ID1:
             {
                  #if(DR16_LOCATION_SET == chassis)
-                         CAN2_Struct->RC.rc.ch[2] = (int16_t)(Rx_Data[0]<<8)|Rx_Data[1];
-                         CAN2_Struct->RC.rc.ch[3] = (int16_t)(Rx_Data[2]<<8)|Rx_Data[3];
-                         CAN2_Struct->RC.rc.ch[4] = (int16_t)(Rx_Data[4]<<8)|Rx_Data[5];
-                         CAN2_Struct->RC.rc.s1 = Rx_Data[6];
-                         CAN2_Struct->RC.rc.s2 = Rx_Data[7];
+                         CAN2_Struct->RC->rc.ch[2] = (int16_t)(Rx_Data[0]<<8)|Rx_Data[1];
+                         CAN2_Struct->RC->rc.ch[3] = (int16_t)(Rx_Data[2]<<8)|Rx_Data[3];
+                         CAN2_Struct->RC->rc.ch[4] = (int16_t)(Rx_Data[4]<<8)|Rx_Data[5];
+                         CAN2_Struct->RC->rc.s1 = Rx_Data[6];
+                         CAN2_Struct->RC->rc.s2 = Rx_Data[7];
                  #endif
                 break;
             }
@@ -61,6 +61,7 @@ void CAN2_Rece_DATAHandle(void)
             {
                  CAN2_Struct->Gimbal.firestate = (Fire_state)Rx_Data[0];
                  CAN2_Struct->Gimbal.Yaw_angle = _8bits_to_float(Rx_Data[1],Rx_Data[2],Rx_Data[3],Rx_Data[4]);
+                 
                 break;
             }
             default:

@@ -7,7 +7,7 @@ OmniWheel_Infantry_Chassis_Struct *OmniWheel_Chassis;
 void Chassis_Init(void)
 {
   OmniWheel_Chassis = get_infantry_struct();
-
+  OmniWheel_Chassis->RC = get_rc_struct();
   Motor_Attitude_Set(&OmniWheel_Chassis->Chassis.LB_Wheel.MotorAtt,M3508,LB_MOTOR_ID);
   Motor_Attitude_Set(&OmniWheel_Chassis->Chassis.LF_Wheel.MotorAtt,M3508,LF_MOTOR_ID);
   Motor_Attitude_Set(&OmniWheel_Chassis->Chassis.RB_Wheel.MotorAtt,M3508,RB_MOTOR_ID);
@@ -38,9 +38,9 @@ void Chassis_RCDataHandle(Chassis_State State)
   float chassis_x, chassis_y;
   float sin_t, cos_t;
 
-  OmniWheel_Chassis->Handle_RC.Chassis_X = -OmniWheel_Chassis->RC.rc.ch[3] * chassis_speed_gain;
-  OmniWheel_Chassis->Handle_RC.Chassis_Y = OmniWheel_Chassis->RC.rc.ch[2] * chassis_speed_gain;
-  OmniWheel_Chassis->Handle_RC.Chassis_Yaw = OmniWheel_Chassis->RC.rc.ch[0] * chassis_yaw_gain;
+  OmniWheel_Chassis->Handle_RC.Chassis_X = -OmniWheel_Chassis->RC->rc.ch[3] * chassis_speed_gain;
+  OmniWheel_Chassis->Handle_RC.Chassis_Y = OmniWheel_Chassis->RC->rc.ch[2] * chassis_speed_gain;
+  OmniWheel_Chassis->Handle_RC.Chassis_Yaw = OmniWheel_Chassis->RC->rc.ch[0] * chassis_yaw_gain;
 
   // 对应云台坐标系的运动方向
   switch (State)
@@ -148,6 +148,7 @@ void Chassis_lock(void)
   OmniWheel_Chassis->Chassis.RF_Wheel.Motor_Data.speed_pid_out = Speed_lap_pid(&OmniWheel_Chassis->Chassis.RF_Wheel.Pid_speed,
                                                                                0,
                                                                                OmniWheel_Chassis->Chassis.RF_Wheel.Motor_Data.Motor_Get.speed_get);
+  ChassisControlStateOutput();
 }
 
 void ChassisControlStateSPid(void)
@@ -179,7 +180,7 @@ void ChassisControlStateOutput(void)
   OmniWheel_Chassis->Chassis.RF_Wheel.Motor_Data.give_current = (int16_t)OmniWheel_Chassis->Chassis.RF_Wheel.Motor_Data.speed_pid_out;
 }
 
-void ChassisControlAchieve(Chassis_State State)
+void ChassisControlChoose(Chassis_State State)
 {
     OmniWheel_Chassis->Chassis.ChassisState = State;
     switch(State)

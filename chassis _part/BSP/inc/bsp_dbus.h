@@ -49,4 +49,5 @@ void dr16_data_input(void);
 void rx_data_cpy(void);
 void Rcdata_Decode(rc_data_t  *RC,uint8_t *pData);
 void Lost_contact_CHSetZero(rc_data_t  *RC);
+rc_data_t *get_rc_struct(void);
 #endif /*__BSP_DBUS_H*/

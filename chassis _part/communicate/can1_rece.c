@@ -54,18 +54,16 @@ void CAN1_Rece_DATAHandle(void)
                 CAN1_Struct->Chassis.RB_Wheel.Motor_Data.Motor_Get.speed_get = (uint16_t)(Rx_Data[2] << 8) | Rx_Data[3];
                 break;
             }
-
-            #if(Rammer_Location == chassis)
-
+ 
             case 0x200 + Rammer_MOTOR_ID:
-			{
+			{ 
+                #if(Rammer_Location == chassis)
 				CAN1_Struct->Rammer.Rammer_Motor.Motor_Data.Motor_Get.position_get = (uint16_t)(Rx_Data[0] << 8) | Rx_Data[1];
 				CAN1_Struct->Rammer.Rammer_Motor.Motor_Data.Motor_Get.speed_get = (uint16_t)(Rx_Data[2] << 8) | Rx_Data[3];
 				Encoder_Calculate(&CAN1_Struct->Rammer.Rammer_Motor.Encoder,CAN1_Struct->Rammer.Rammer_Motor.Motor_Data.Motor_Get.position_get,CAN1_Struct->Rammer.Rammer_Motor.MotorAtt.Max_Encoder_val,CAN1_Struct->Rammer.Rammer_Motor.MotorAtt.Reduction_ratio);
 				break;
+                #endif
 		    }
-
-            #endif
 
             default:
             {

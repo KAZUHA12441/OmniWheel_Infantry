@@ -13,6 +13,12 @@
 #include "bsp_can.h"
 #include "bsp_rm_motor.h"
 #include "state_change.h"
+#include "can2_rece.h"
+#include "can1_rece.h"
+
+
+
+
 
 #define max_value_limit(x, max, min) x > max ? max : (x < min ? min : x)
 
@@ -106,7 +112,7 @@ typedef struct
     Motor_t  Rammer_Motor;
  }Rammer;
  //遥控数据
- rc_data_t RC;
+ rc_data_t *RC;
  RCData_Handle_t  Handle_RC; 
  float Relative_angle;
  //陀螺仪&云台姿态数据

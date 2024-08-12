@@ -12,6 +12,8 @@
 //拨弹盘位置选择
 #define Rammer_Location      chassis
 
+#define lost_time_limit         2000
+
 //底盘参数
 #define chassis_speed_gain         7.0f
 #define chassis_yaw_gain           3.0f

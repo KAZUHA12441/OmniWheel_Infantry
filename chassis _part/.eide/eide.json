@@ -418,7 +418,10 @@
           "BSP/inc",
           "communicate",
           "System",
-          "Task"
+          "Task",
+          "APP/Chassis",
+          "APP/rammer",
+          "APP/Yaw_GM6020"
         ],
         "libList": [],
         "sourceDirList": [],

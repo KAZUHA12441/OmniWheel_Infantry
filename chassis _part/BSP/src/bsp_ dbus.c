@@ -4,6 +4,7 @@
 
 uint8_t  DR16_DATA[18]; 
 
+rc_data_t rc;
 UCB dmarx;
 
 uint8_t rxbuffer[RX_BufSIZE];
@@ -13,6 +14,12 @@ uint8_t dbus_buffer[TX_BufSIZE];
 #define  CH_DATA_OFFSET  1024
 
 #define Dead_Band(x,val) (x < val && x > -val) ? 0 : x 
+
+rc_data_t *get_rc_struct(void)
+{
+	return &rc; 
+}
+
 
 /// @brief 遥控器数据解码 
 /// @param rc 通道数据结构体
@@ -68,6 +75,8 @@ void USART_PtrInit(void)
 	dmarx.TxEndPtr = &dmarx.Txlocation[9];
 	dmarx.Txcount = 0;
 	dmarx.TxInPtr->start = dbus_buffer;
+    
+	
 	DMA_RX_Init();
 }
 
@@ -165,7 +174,8 @@ void dr16_data_input(void)
 		// 判断数据是否合法＿18byte＿
 		if ((dmarx.TxOutPtr->end - dmarx.TxOutPtr->start + 1) == DBUS_data_len)
 		{
-		  
+		     Rcdata_Decode(&rc,dmarx.TxOutPtr->start);
+
 		}
 		dmarx.TxOutPtr++;
 		if (dmarx.TxOutPtr == dmarx.TxEndPtr)
@@ -174,4 +184,3 @@ void dr16_data_input(void)
 		}
 	}
 }
- 

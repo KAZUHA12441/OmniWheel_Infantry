@@ -16,7 +16,7 @@ void Rammer_Init(void)
 /// @brief 拨弹状态选择
 /// @param State 拨弹盘状态
 uint8_t  Rammer_NOW;               
-void RammerOnAchieve(Rammer_State State)
+void RammerOnChoose(Rammer_State State)
 {
   float set_encoder;
   if(Rammer_Struct->Gimbal.firestate == Friction_on)
