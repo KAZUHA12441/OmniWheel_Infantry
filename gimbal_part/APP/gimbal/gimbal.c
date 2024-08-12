@@ -9,6 +9,7 @@ OmniWheel_Infantry_Gimbal_Struct *Gimbal_Struct;
 void Gimbal_Init(void)
 {
     Gimbal_Struct = get_infantry_struct();
+    Gimbal_Struct->RC = get_rc_struct();
     Encoder_Init(&Gimbal_Struct->Gimbal.Gimbal_Yaw_Motor.Encoder);
     // 电机属性赋值
     Motor_Attitude_Set(&Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.MotorAtt, GM6020, Gimbal_Pitch_MotorID);
