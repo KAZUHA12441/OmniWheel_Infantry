@@ -197,7 +197,8 @@ void ChassisControlChoose(Chassis_State State)
             Chassis_lock();
             break;
         }
-        case chassis_contrl || chassis_dreidel_on: {
+        case chassis_dreidel_on:
+        case chassis_contrl: {
             Chassis_RCDataHandle(State);
             ChassisControlStateSPid();
             ChassisControlStateOutput();
