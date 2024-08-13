@@ -58,5 +58,6 @@ void Init_Part(void const * argument)
   Rammer_Init();
   #endif
   Yaw_Encoder_Init();
+  vTaskSuspend(Initialize);
 }
 

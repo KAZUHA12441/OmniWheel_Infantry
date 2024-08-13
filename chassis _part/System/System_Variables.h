@@ -86,7 +86,6 @@ typedef struct
     float quaternion[4]; //四元数
     attritude_angle Euler_angle;
 }Attitude_data_t;
-
  
 typedef struct
 {
@@ -97,6 +96,7 @@ typedef struct
     Motor_t  RF_Wheel;
     Motor_t  LB_Wheel;
     Motor_t  RB_Wheel;
+    pid_parameter_t Chassis_Yaw;
     Chassis_State ChassisState;  
  }Chassis; 
  
