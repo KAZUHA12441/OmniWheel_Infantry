@@ -20,9 +20,9 @@ void Chassis_Init(void)
 
     Pid_Parameter_Init(&OmniWheel_Chassis->Chassis.RF_Wheel.Pid_speed, Chassis_Kp, Chassis_Ki, Chassis_Kd, 16000, 0);
 
-    Pid_Parameter_Init(&OmniWheel_Chassis->Chassis.RB_Wheel.Pid_speed, Chassis_Kp, Chassis_Ki, Chassis_Kd, 16000, 0);
-    
-    Pid_Parameter_Init(&OmniWheel_Chassis->Chassis.Chassis_Yaw, Chassis_Kp, Chassis_Ki, Chassis_Kd, 16000, 0);
+    Pid_Parameter_Init(&OmniWheel_Chassis->Chassis.RB_Wheel.Pid_speed, Chassis_Kp, Chassis_Ki, Chassis_Kd,2000, 0);
+    //底盘的角度环
+    Pid_Parameter_Init(&OmniWheel_Chassis->Chassis.Chassis_Yaw, Chassis_Kp, Chassis_Ki, Chassis_Kd, 4600, 0);
     // 创建一个一阶低通滤波器
     First_low_pass_fiterCreate(&OmniWheel_Chassis->Handle_RC.Filter_Chassis_X, Chassis_filter_alpha);
     First_low_pass_fiterCreate(&OmniWheel_Chassis->Handle_RC.Filter_Chassis_Y, Chassis_filter_alpha);
@@ -38,10 +38,9 @@ void Chassis_RCDataHandle(Chassis_State State)
     float chassis_x, chassis_y,chassis_yaw;
     float sin_t, cos_t;
     
-        OmniWheel_Chassis->Handle_RC.Chassis_X = -OmniWheel_Chassis->RC->rc.ch[3] * chassis_speed_gain;
+    OmniWheel_Chassis->Handle_RC.Chassis_X = -OmniWheel_Chassis->RC->rc.ch[3] * chassis_speed_gain;
     OmniWheel_Chassis->Handle_RC.Chassis_Y     = OmniWheel_Chassis->RC->rc.ch[2] * chassis_speed_gain;
-    OmniWheel_Chassis->Handle_RC.Chassis_Yaw   = OmniWheel_Chassis->RC->rc.ch[0] * chassis_yaw_gain;
-
+    //YAW由云台坐标系决定 
     // 对应云台坐标系的运动方向
     switch (State) {
         // 普通底盘模式(底盘跟随)
