@@ -63,13 +63,6 @@ typedef struct
     Encoder_t Encoder;               //电机编码器
 }Motor_t;
 
-// typedef struct 
-// {
-//     float  roll;
-//     float  pitch; 
-//     float  yaw;
-// }Euler_angle_t;
-
 typedef struct 
 {
   float Chassis_X;
@@ -104,6 +97,7 @@ typedef struct
  {
     Motor_t Gimbal_Yaw_Motor;
     float Yaw_angle;
+    //拨弹盘状态
     Fire_state firestate;
  }Gimbal;
  //拨弹盘
@@ -111,6 +105,7 @@ typedef struct
  { 
     Motor_t  Rammer_Motor;
  }Rammer;
+
  //遥控数据
  rc_data_t *RC;
  RCData_Handle_t  Handle_RC; 

@@ -82,6 +82,7 @@ void GimbalControl(Gimbal_State State)
             }
 
             Gimbal_Struct->Gimbal.Pitch.Now_angle = max_value_limit(Gimbal_Struct->Gimbal.Pitch.Now_angle, Gimbal_Pitch_Max_SetVal, Gimbal_Pitch_Min_SetVal);
+            
             // pid计算
             //串级锁死，防止乱动
             Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.Motor_Data.speed_pid_out = Position_2_Speed_Pid(&Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.Pid_position,
@@ -120,7 +121,6 @@ void CheckOutput_Change(void)
 
     // PITCH重力软件补偿
     if (Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.Motor_Data.give_current < 1000 && Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.Motor_Data.give_current > 0)
-        ;
     {
         Gimbal_Struct->Gimbal.Gimbal_Pitch_Motor.Motor_Data.give_current = gimbal_pitch_compensate;
     }
